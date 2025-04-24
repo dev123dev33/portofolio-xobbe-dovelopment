@@ -1,164 +1,252 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>VOUNTE | XOBE DEVELOPMENT Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>XOBE DEVELOPMENT | Ultra Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/scrollreveal"></script>
   <style>
-    html {
-      scroll-behavior: smooth;
+    :root {
+      --primary-color: #00BFA6;
+      --background-color: #0e0e0e;
+      --card-color: #1c1c1e;
+      --text-color: #f4f4f5;
+      --link-color: #4fc3f7;
+      --border-glow: 0 0 20px rgba(0,191,166,0.7);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
     body {
-      font-family: 'Roboto', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #0f2027;
-      color: #fff;
-      transition: background 0.3s, color 0.3s;
+      font-family: 'Outfit', sans-serif;
+      background: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.7;
+      overflow-x: hidden;
     }
 
-    body.dark-mode {
-      background: #f4f4f4;
-      color: #111;
+    header {
+      background-color: #121212;
+      padding: 25px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: var(--border-glow);
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
 
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 20px;
+    header h1 {
+      font-size: 2rem;
+      color: var(--primary-color);
     }
 
-    .typing {
-      font-size: 1.6rem;
-      white-space: nowrap;
-      border-right: 2px solid;
-      overflow: hidden;
-      width: 0;
-      animation: typing 4s steps(40, end) forwards, blink 0.75s step-end infinite;
-    }
-
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 100%; }
-    }
-
-    @keyframes blink {
-      50% { border-color: transparent; }
-    }
-
-    .toggle-btn {
-      background: #f0c674;
-      color: #000;
-      padding: 8px 16px;
-      border: none;
-      cursor: pointer;
-      border-radius: 6px;
-      margin: 15px 0;
-    }
-
-    .clock {
+    nav a {
+      color: var(--text-color);
+      text-decoration: none;
+      margin-left: 30px;
       font-weight: bold;
-      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--primary-color);
+    }
+
+    .branding-title {
+      font-size: 4rem;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 60px;
+      color: var(--primary-color);
+      text-shadow: 0 0 25px rgba(0,191,166,0.6), 0 0 5px rgba(255,255,255,0.2);
+      animation: flicker 2s infinite;
+    }
+
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      45% { opacity: 0.85; }
+      55% { opacity: 0.95; }
+      75% { opacity: 0.7; }
+    }
+
+    .hero {
+      text-align: center;
+      padding: 100px 20px;
+      background: radial-gradient(circle at top, #1c1c1e, #0e0e0e);
+    }
+
+    .hero h2 {
+      font-size: 3rem;
       margin-bottom: 20px;
+      color: var(--primary-color);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #d1d1d1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    section {
+      padding: 80px 60px;
+    }
+
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      color: var(--primary-color);
+      border-left: 6px solid var(--primary-color);
+      padding-left: 15px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 40px;
+    }
+
+    .card {
+      background: var(--card-color);
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: var(--border-glow);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+    }
+
+    .card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      color: #ffffff;
+    }
+
+    .card p, .card ul {
+      font-size: 0.95rem;
+      color: #c9c9c9;
+    }
+
+    .card ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .card ul li::before {
+      content: "▹";
+      color: var(--primary-color);
+      margin-right: 8px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 0.9rem;
+      color: #888;
+      background: #101010;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 14px 28px;
+      background-color: var(--primary-color);
+      color: #000;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #00e1c5;
     }
 
     a {
-      color: #7ad7f0;
+      color: var(--link-color);
       text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    blockquote {
-      margin-top: 30px;
-      font-style: italic;
-      border-left: 4px solid #f0c674;
-      padding-left: 16px;
-      color: #ccc;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1 class="typing">💼 VOUNTE | XOBE DEVELOPMENT</h1>
-    <button class="toggle-btn" onclick="toggleDarkMode()">Toggle Dark Mode</button>
-    <div id="clock" class="clock"></div>
+  <div class="branding-title">XOBE DEVELOPMENT</div>
 
-    <p>I’m <strong>VOUNTE</strong>, a passionate young developer and the founder of <strong>XOBE DEVELOPMENT</strong>. I specialize in creating web-based games, engines, and tools using modern technologies.</p>
+  <header>
+    <h1>XOBE</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-    <h2>🧠 About Me</h2>
-    <ul>
-      <li>Alias: VOUNTE</li>
-      <li>Brand: XOBE DEVELOPMENT</li>
-      <li>Age: 12</li>
-      <li>Location: Central Kalimantan, Indonesia</li>
-      <li>Roles: Student • Developer • Game Jockey • YouTube Creator</li>
-    </ul>
+  <section class="hero">
+    <h2>Crafting Next-Level Digital Experiences</h2>
+    <p>Official portfolio of XOBE DEVELOPMENT, led by VOUNTE — creating smart, fun, and interactive web-based projects.</p>
+  </section>
 
-    <h2>🚀 Areas of Expertise</h2>
-    <ul>
-      <li>Game Development (HTML, CSS, JavaScript, Roblox)</li>
-      <li>Web Development & UI/UX</li>
-      <li>Engine Design (HAXC ENGINE, etc.)</li>
-      <li>Custom OS Tools (GG OS Terminal)</li>
-      <li>Game mechanics for casual & puzzle games</li>
-    </ul>
+  <section id="about">
+    <h2>About</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>👤 VOUNTE</h3>
+        <p>Young developer from Central Kalimantan. Founder of XOBE DEVELOPMENT.</p>
+      </div>
+      <div class="card">
+        <h3>⚙️ Skills</h3>
+        <ul>
+          <li>HTML, CSS, JavaScript</li>
+          <li>Roblox Game Dev</li>
+          <li>UI/UX & Engines</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>🎯 Roles</h3>
+        <p>Student • Web Dev • Game Creator • Joki</p>
+      </div>
+    </div>
+  </section>
 
-    <h2>📌 Key Projects</h2>
-    <p><strong>Tebak X</strong>: Number guessing game with AI mode, themes, and leveling.</p>
-    <p><strong>HAXC ENGINE</strong>: Unity-inspired web engine.</p>
-    <p><strong>Bubble Dash</strong>: Pop-and-dash casual game.</p>
-    <p><strong>GG OS Terminal</strong>: Fictional OS simulation with features.</p>
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="grid">
+      <div class="card"><h3>🧠 Tebak X</h3><p>AI mode, combo, level system</p></div>
+      <div class="card"><h3>🛠 HAXC ENGINE</h3><p>Web engine like Unity</p></div>
+      <div class="card"><h3>💥 Bubble Dash</h3><p>Pop bubbles, gain points</p></div>
+      <div class="card"><h3>🖥 GG OS Terminal</h3><p>Fictional OS simulator</p></div>
+    </div>
+    <a href="https://xobe-development.itch.io" target="_blank" class="btn">View Projects</a>
+  </section>
 
-    <h2>🔄 Development Commitment</h2>
-    <p>I update all my projects regularly. Expect changelogs, bug fixes, and new features over time.</p>
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="grid">
+      <div class="card"><h3>📫 Email</h3><p>hackzxc153@gmail.com</p></div>
+      <div class="card"><h3>GitHub</h3><p><a href="https://github.com/dev123dev33">dev123dev33</a></p></div>
+      <div class="card"><h3>Itch.io</h3><p><a href="https://xobe-development.itch.io">xobe-development.itch.io</a></p></div>
+    </div>
+  </section>
 
-    <h2>📊 Achievements & Learning</h2>
-    <ul>
-      <li>Created 50+ projects</li>
-      <li>Consistent updates & changelogs</li>
-      <li>Uses AI tools (ChatGPT, Copilot)</li>
-      <li>Learning & improving constantly</li>
-    </ul>
-
-    <h2>🧩 Tools & Stack</h2>
-    <ul>
-      <li>Languages: HTML, CSS, JS</li>
-      <li>Platforms: GitHub, Itch.io, YouTube</li>
-      <li>Tools: OBS, CapCut, KineMaster</li>
-    </ul>
-
-    <h2>🌐 Platforms</h2>
-    <p>GitHub: <a href="https://github.com/dev123dev33" target="_blank">https://github.com/dev123dev33</a></p>
-    <p>Itch.io: <a href="https://xobe-development.itch.io" target="_blank">https://xobe-development.itch.io</a></p>
-
-    <h2>📩 Contact</h2>
-    <p>Email: hackzxc153@gmail.com</p>
-
-    <blockquote>“Every project is not just a product — it's a part of my journey.”<br>— VOUNTE</blockquote>
-  </div>
+  <footer>
+    &copy; 2025 XOBE DEVELOPMENT • All Rights Reserved.
+  </footer>
 
   <script>
-    function updateClock() {
-      const now = new Date();
-      const hours = now.getHours().toString().padStart(2, '0');
-      const minutes = now.getMinutes().toString().padStart(2, '0');
-      const seconds = now.getSeconds().toString().padStart(2, '0');
-      document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
-    }
-
-    setInterval(updateClock, 1000);
-    updateClock();
-
-    function toggleDarkMode() {
-      document.body.classList.toggle("dark-mode");
-    }
+    ScrollReveal({ reset: false, distance: '50px', duration: 1200, delay: 200 });
+    ScrollReveal().reveal('.branding-title', { origin: 'top' });
+    ScrollReveal().reveal('.hero', { origin: 'bottom' });
+    ScrollReveal().reveal('section h2', { origin: 'left' });
+    ScrollReveal().reveal('.card', { interval: 200, origin: 'bottom' });
+    ScrollReveal().reveal('footer', { origin: 'bottom', delay: 400 });
   </script>
 </body>
 </html>
-

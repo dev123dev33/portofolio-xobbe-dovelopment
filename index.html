@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,11 +6,89 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>VOUNTE | XOBE DEVELOPMENT Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #0f2027;
+      color: #fff;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    body.dark-mode {
+      background: #f4f4f4;
+      color: #111;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .typing {
+      font-size: 1.6rem;
+      white-space: nowrap;
+      border-right: 2px solid;
+      overflow: hidden;
+      width: 0;
+      animation: typing 4s steps(40, end) forwards, blink 0.75s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    .toggle-btn {
+      background: #f0c674;
+      color: #000;
+      padding: 8px 16px;
+      border: none;
+      cursor: pointer;
+      border-radius: 6px;
+      margin: 15px 0;
+    }
+
+    .clock {
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+
+    a {
+      color: #7ad7f0;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    blockquote {
+      margin-top: 30px;
+      font-style: italic;
+      border-left: 4px solid #f0c674;
+      padding-left: 16px;
+      color: #ccc;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
-    <h1>💼 VOUNTE | XOBE DEVELOPMENT</h1>
+    <h1 class="typing">💼 VOUNTE | XOBE DEVELOPMENT</h1>
+    <button class="toggle-btn" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    <div id="clock" class="clock"></div>
+
     <p>I’m <strong>VOUNTE</strong>, a passionate young developer and the founder of <strong>XOBE DEVELOPMENT</strong>. I specialize in creating web-based games, engines, and tools using modern technologies.</p>
 
     <h2>🧠 About Me</h2>
@@ -63,6 +142,23 @@
 
     <blockquote>“Every project is not just a product — it's a part of my journey.”<br>— VOUNTE</blockquote>
   </div>
-  <script src="script.js"></script>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const hours = now.getHours().toString().padStart(2, '0');
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      const seconds = now.getSeconds().toString().padStart(2, '0');
+      document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+  </script>
 </body>
 </html>
+

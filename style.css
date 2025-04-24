@@ -1,29 +1,75 @@
 body {
   font-family: 'Roboto', sans-serif;
-  background: #f0f2f5;
-  color: #333;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #e0e0e0;
   margin: 0;
-  padding: 20px;
+  padding: 0;
+  perspective: 1500px;
+  overflow-x: hidden;
 }
+
 .container {
-  background: #fff;
-  padding: 30px;
-  max-width: 800px;
-  margin: auto;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 40px;
+  max-width: 900px;
+  margin: 60px auto;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), inset 0 0 30px rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transform-style: preserve-3d;
+  animation: fadeIn 1s ease-out;
 }
+
 h1, h2 {
-  color: #2c3e50;
+  color: #f0c674;
+  text-shadow: 0 0 10px #f0c674, 0 0 20px rgba(240, 198, 116, 0.5);
+  margin-bottom: 20px;
 }
+
+ul {
+  padding-left: 20px;
+  margin-bottom: 25px;
+}
+
+li {
+  margin-bottom: 8px;
+}
+
 a {
-  color: #2980b9;
+  color: #7ad7f0;
   text-decoration: none;
+  transition: color 0.3s ease;
 }
+a:hover {
+  color: #ffffff;
+  text-shadow: 0 0 5px #7ad7f0;
+}
+
+p {
+  margin-bottom: 20px;
+  line-height: 1.7;
+}
+
 blockquote {
-  margin-top: 30px;
+  margin-top: 40px;
   font-style: italic;
-  color: #777;
-  border-left: 5px solid #ccc;
-  padding-left: 15px;
+  color: #ccc;
+  border-left: 5px solid #f0c674;
+  padding-left: 20px;
+  box-shadow: inset 0 0 10px rgba(240, 198, 116, 0.3);
+  background: rgba(255, 255, 255, 0.02);
+  padding: 15px;
+  border-radius: 10px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: rotateY(10deg) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: rotateY(0deg) scale(1);
+  }
 }

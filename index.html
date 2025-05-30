@@ -4,16 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>XOBE DEVELOPMENT | Ultra Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/scrollreveal"></script>
   <style>
     :root {
       --primary-color: #00BFA6;
-      --background-color: #0e0e0e;
-      --card-color: #1c1c1e;
+      --secondary-color: #4fc3f7;
+      --background-color: #10151a;
+      --card-color: #181d23;
       --text-color: #f4f4f5;
+      --muted-text: #b0b8c1;
       --link-color: #4fc3f7;
-      --border-glow: 0 0 20px rgba(0,191,166,0.7);
+      --border-glow: 0 0 18px rgba(0,191,166,0.5);
+      --shadow: 0 4px 24px rgba(0,0,0,0.12);
     }
 
     * {
@@ -23,16 +26,17 @@
     }
 
     body {
-      font-family: 'Outfit', sans-serif;
+      font-family: 'Inter', 'Outfit', sans-serif;
       background: var(--background-color);
       color: var(--text-color);
       line-height: 1.7;
       overflow-x: hidden;
+      min-height: 100vh;
     }
 
     header {
-      background-color: #121212;
-      padding: 25px 60px;
+      background: #151a20cc;
+      padding: 22px 60px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -40,33 +44,52 @@
       position: sticky;
       top: 0;
       z-index: 10;
+      backdrop-filter: blur(8px);
     }
 
     header h1 {
-      font-size: 2rem;
+      font-size: 2.1rem;
       color: var(--primary-color);
+      letter-spacing: 2px;
+      font-family: 'Outfit', sans-serif;
     }
 
     nav a {
       color: var(--text-color);
       text-decoration: none;
-      margin-left: 30px;
-      font-weight: bold;
-      transition: color 0.3s ease;
+      margin-left: 32px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+      position: relative;
     }
-
+    nav a::after {
+      content: "";
+      display: block;
+      width: 0;
+      height: 2px;
+      background: var(--primary-color);
+      transition: width 0.3s;
+      position: absolute;
+      left: 0; bottom: -4px;
+    }
     nav a:hover {
       color: var(--primary-color);
     }
+    nav a:hover::after {
+      width: 100%;
+    }
 
     .branding-title {
-      font-size: 4rem;
+      font-size: 3.2rem;
       font-weight: bold;
       text-align: center;
-      margin-top: 60px;
+      margin-top: 48px;
       color: var(--primary-color);
-      text-shadow: 0 0 25px rgba(0,191,166,0.6), 0 0 5px rgba(255,255,255,0.2);
-      animation: flicker 2s infinite;
+      text-shadow: 0 0 18px rgba(0,191,166,0.5), 0 0 5px rgba(255,255,255,0.12);
+      letter-spacing: 2px;
+      animation: flicker 2.5s infinite;
+      font-family: 'Outfit', sans-serif;
     }
 
     @keyframes flicker {
@@ -78,67 +101,80 @@
 
     .hero {
       text-align: center;
-      padding: 100px 20px;
-      background: radial-gradient(circle at top, #1c1c1e, #0e0e0e);
+      padding: 90px 20px 60px 20px;
+      background: linear-gradient(120deg, #1c232b 0%, #10151a 100%);
+      border-bottom: 1.5px solid #1c232b;
     }
 
     .hero h2 {
-      font-size: 3rem;
-      margin-bottom: 20px;
+      font-size: 2.5rem;
+      margin-bottom: 18px;
       color: var(--primary-color);
+      font-family: 'Outfit', sans-serif;
+      letter-spacing: 1px;
     }
 
     .hero p {
-      font-size: 1.2rem;
-      color: #d1d1d1;
-      max-width: 800px;
+      font-size: 1.15rem;
+      color: var(--muted-text);
+      max-width: 700px;
       margin: 0 auto;
     }
 
     section {
-      padding: 80px 60px;
+      padding: 70px 60px;
     }
 
     section h2 {
-      font-size: 2rem;
-      margin-bottom: 30px;
+      font-size: 1.7rem;
+      margin-bottom: 28px;
       color: var(--primary-color);
       border-left: 6px solid var(--primary-color);
       padding-left: 15px;
+      font-family: 'Outfit', sans-serif;
+      letter-spacing: 1px;
     }
 
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 40px;
+      gap: 36px;
     }
 
     .card {
       background: var(--card-color);
-      padding: 30px;
+      padding: 28px;
       border-radius: 16px;
-      box-shadow: var(--border-glow);
-      transition: transform 0.3s ease;
+      box-shadow: var(--shadow);
+      transition: transform 0.25s, box-shadow 0.25s;
+      border: 1.5px solid #232a31;
+      position: relative;
+      overflow: hidden;
     }
 
     .card:hover {
-      transform: translateY(-10px);
+      transform: translateY(-8px) scale(1.025);
+      box-shadow: 0 8px 32px rgba(0,191,166,0.12), var(--shadow);
+      border-color: var(--primary-color);
     }
 
     .card h3 {
-      font-size: 1.4rem;
-      margin-bottom: 15px;
-      color: #ffffff;
+      font-size: 1.25rem;
+      margin-bottom: 13px;
+      color: #fff;
+      font-family: 'Outfit', sans-serif;
+      letter-spacing: 0.5px;
     }
 
     .card p, .card ul {
-      font-size: 0.95rem;
+      font-size: 0.97rem;
       color: #c9c9c9;
     }
 
     .card ul {
       list-style: none;
       padding-left: 0;
+      margin-top: 10px;
     }
 
     .card ul li::before {
@@ -147,33 +183,119 @@
       margin-right: 8px;
     }
 
-    footer {
-      text-align: center;
-      padding: 30px;
-      font-size: 0.9rem;
-      color: #888;
-      background: #101010;
+    .card a {
+      color: var(--secondary-color);
+      text-decoration: none;
+      transition: color 0.2s;
+      font-weight: 600;
+    }
+    .card a:hover {
+      color: var(--primary-color);
+      text-decoration: underline;
     }
 
     .btn {
       display: inline-block;
-      margin-top: 25px;
-      padding: 14px 28px;
+      margin-top: 22px;
+      padding: 12px 26px;
       background-color: var(--primary-color);
       color: #000;
       border-radius: 8px;
       font-weight: bold;
       text-decoration: none;
-      transition: background 0.3s ease;
+      transition: background 0.3s;
+      box-shadow: 0 2px 12px rgba(0,191,166,0.08);
+      border: none;
+      font-family: 'Outfit', sans-serif;
+      letter-spacing: 0.5px;
     }
-
     .btn:hover {
       background-color: #00e1c5;
+      color: #10151a;
     }
 
-    a {
-      color: var(--link-color);
-      text-decoration: none;
+    footer {
+      text-align: center;
+      padding: 28px 10px;
+      font-size: 0.95rem;
+      color: #b0b8c1;
+      background: #151a20;
+      border-top: 1.5px solid #1c232b;
+      margin-top: 40px;
+      letter-spacing: 1px;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 900px) {
+      section {
+        padding: 40px 16px;
+      }
+      .branding-title {
+        font-size: 2.1rem;
+        margin-top: 24px;
+      }
+      header {
+        padding: 14px 12px;
+      }
+      .hero h2 {
+        font-size: 1.5rem;
+      }
+      section h2 {
+        font-size: 1.1rem;
+        padding-left: 8px;
+      }
+      .card {
+        padding: 16px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .branding-title {
+        font-size: 1.2rem;
+        margin-top: 12px;
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 8px 4px;
+      }
+      nav {
+        margin-top: 8px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      nav a {
+        margin-left: 0;
+        font-size: 0.98rem;
+      }
+      .hero {
+        padding: 28px 4px;
+      }
+      .hero h2 {
+        font-size: 1.05rem;
+      }
+      section {
+        padding: 18px 2px;
+      }
+      .grid {
+        gap: 12px;
+      }
+      .card {
+        padding: 8px;
+        border-radius: 8px;
+      }
+      .card h3 {
+        font-size: 1rem;
+      }
+      .card p, .card ul {
+        font-size: 0.85rem;
+      }
+      footer {
+        padding: 10px 2px;
+        font-size: 0.78rem;
+      }
     }
   </style>
 </head>
@@ -191,7 +313,7 @@
 
   <section class="hero">
     <h2>Crafting Next-Level Digital Experiences</h2>
-    <p>Official portfolio of XOBE DEVELOPMENT, led by VOUNTE — creating smart, fun, and interactive web-based projects.</p>
+    <p>Official portfolio of XOBE DEVELOPMENT, led by VOUNTE — creating smart, fun, and interactive web-based projects for a global audience.</p>
   </section>
 
   <section id="about">
@@ -205,13 +327,13 @@
         <h3>⚙️ Skills</h3>
         <ul>
           <li>HTML, CSS, JavaScript</li>
-          <li>python projects</li>
+          <li>Python Projects</li>
           <li>UI/UX & Engines</li>
         </ul>
       </div>
       <div class="card">
         <h3>🎯 Roles</h3>
-        <p>Student • Web Dev • Game Creator • Joki</p>
+        <p>Student • Web Developer • Game Creator • Freelancer</p>
       </div>
     </div>
   </section>
@@ -219,12 +341,61 @@
   <section id="projects">
     <h2>Projects</h2>
     <div class="grid">
-      <div class="card"><h3>🧠 Tebak X</h3><p>AI mode, combo, level system</p></div>
-      <div class="card"><h3>🛠 HAXC ENGINE</h3><p>Web engine like Unity</p></div>
-      <div class="card"><h3>💥 Bubble Dash</h3><p>Pop bubbles, gain points</p></div>
-      <div class="card"><h3>🖥 GG OS Terminal</h3><p>Fictional OS simulator</p></div>
+      <div class="card">
+        <h3>
+          <a href="https://dev123dev33.github.io/tebakx/" target="_blank" rel="noopener">
+            🧠 Tebak X
+          </a>
+        </h3>
+        <p>
+          AI-powered number guessing game with combo and level system.<br>
+          <b>Version:</b> 3.3<br>
+          <span style="color:#4fc3f7;">Responsive &amp; playable on any device.</span>
+        </p>
+      </div>
+      <div class="card">
+        <h3>
+          <a href="https://dev123dev33.github.io/Bayangan-Dibalik-Hujan-XOBE-DEVELOPMENT-/" target="_blank" rel="noopener">
+            🌧️ Bayangan di Balik Hujan
+          </a>
+        </h3>
+        <p>
+          Emotional interactive text RPG game.<br>
+          <b>Version:</b> 1.4 (latest update)<br>
+          <span style="color:#4fc3f7;">Deep story, life choices, and immersive narrative.</span>
+        </p>
+      </div>
+      <div class="card">
+        <h3>
+          <a href="https://dev123dev33.github.io/-Bubble-Dash-/" target="_blank" rel="noopener">
+            💥 Bubble Dash
+          </a>
+        </h3>
+        <p>
+          Pop bubbles, gain points, compete on the leaderboard.<br>
+          <b>Version:</b> 1.8 Bubble Dash<br>
+          <span style="color:#4fc3f7;">Fun arcade game, play instantly in your browser.</span>
+        </p>
+      </div>
+      <div class="card">
+        <h3>
+          <a href="https://dev123dev33.github.io/-OS-4.1-GG-Simulasi-Terminal-Selalu-Update-/" target="_blank" rel="noopener">
+            🖥 GG OS Terminal
+          </a>
+        </h3>
+        <p>
+          Fictional OS simulator with interactive terminal.<br>
+          <b>Version:</b> 4.1 GG OS<br>
+          <span style="color:#4fc3f7;">Terminal simulation, always updated with new features.</span>
+        </p>
+      </div>
     </div>
-    <a href="https://xobe-development.itch.io" target="_blank" class="btn">View Projects</a>
+    <div style="text-align:center;margin-top:30px;">
+      <span style="font-size:1.1em;color:#00BFA6;">
+        All projects are fully responsive and accessible on any device.<br>
+        <b>Powered by XOBE DEVELOPMENT</b>
+      </span>
+    </div>
   </section>
 
   <section id="contact">
